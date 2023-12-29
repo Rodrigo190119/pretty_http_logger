@@ -7,8 +7,8 @@ import 'package:pretty_http_logger/src/middleware/http_client_with_middleware.da
 import 'package:pretty_http_logger/src/middleware/http_with_middleware.dart';
 
 void main() async {
-  final res = await baseRequest
-      .get(Uri.parse('https://jsonplaceholder.typicode.com/todos/1'));
+  final res =
+      await baseRequest.get(Uri.parse('https://api.imgflip.com/get_memes'));
   jsonDecode(res.body);
 
   /// *************** Observe the request and response log in the console ***********************
@@ -17,7 +17,7 @@ void main() async {
 class _BaseRequest {
   static final HttpWithMiddleware _httpClient =
       HttpWithMiddleware.build(middlewares: [
-    HttpLogger(logLevel: LogLevel.BODY, spaceSize: 8),
+    HttpLogger(logLevel: LogLevel.BODY, spaceSize: 2),
   ]);
   static final HttpClientWithMiddleware _streamedHttpClient =
       HttpClientWithMiddleware.build(middlewares: [

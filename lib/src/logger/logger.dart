@@ -319,7 +319,8 @@ class Logger {
     }
   }
 
-  String _indent([int tabCount = initialTab]) => tabStep * tabCount * _spaceSize;
+  String _indent([int tabCount = initialTab]) =>
+      tabStep * tabCount * _spaceSize;
 
   void _printPrettyMap(Map data,
       {int tabs = initialTab, bool isListItem = false, bool isLast = false}) {
@@ -332,7 +333,6 @@ class Logger {
     data.keys.toList().asMap().forEach((index, key) {
       final isLast = index == data.length - 1;
       var value = data[key];
-//      key = '\"$key\"';
       if (value is String) {
         value = '\"${value.toString().replaceAll(RegExp(r'(\r|\n)+'), " ")}\"';
       }
@@ -349,7 +349,7 @@ class Logger {
         } else {
           logPrint('║${_indent(tabs)} $key: [');
           _printList(value, tabs: tabs);
-          logPrint('║${_indent(tabs)} ]${isLast ? '' : ','}');
+          logPrint('║${_indent(tabs)}]${isLast ? '' : ','}');
         }
       } else {
         final msg = value.toString().replaceAll('\n', '');
