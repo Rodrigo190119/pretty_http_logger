@@ -31,7 +31,7 @@ class Logger {
   final int maxWidth;
 
   /// number of tab spaces in the beginning of the log, defaults to 4
-  final int spaceSizeInitializer;
+  final int spaceSize;
 
   /// Size in which the Uint8List will be splitted
   static const int chunkSize = 20;
@@ -47,12 +47,12 @@ class Logger {
     required this.logLevel,
     this.maxWidth = 90,
     this.compact = true,
-    this.spaceSizeInitializer = 4,
+    this.spaceSize = 4,
   });
 
-  int get spaceSize {
-    if (spaceSizeInitializer < 1 || spaceSizeInitializer > 10) return 4;
-    return spaceSizeInitializer;
+  int get _spaceSize {
+    if (spaceSize < 1 || spaceSize > 10) return 4;
+    return spaceSize;
   }
 
   void logRequest(RequestData data) {
@@ -319,7 +319,7 @@ class Logger {
     }
   }
 
-  String _indent([int tabCount = initialTab]) => tabStep * tabCount * spaceSize;
+  String _indent([int tabCount = initialTab]) => tabStep * tabCount * _spaceSize;
 
   void _printPrettyMap(Map data,
       {int tabs = initialTab, bool isListItem = false, bool isLast = false}) {

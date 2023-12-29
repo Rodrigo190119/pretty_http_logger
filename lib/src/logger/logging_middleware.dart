@@ -47,7 +47,7 @@ class HttpLogger implements MiddlewareContract {
     this.logLevel = LogLevel.BODY,
     this.spaceSize = 4,
   }) {
-    logger = Logger(logLevel: logLevel, spaceSizeInitializer: spaceSize);
+    logger = Logger(logLevel: logLevel, spaceSize: spaceSize);
   }
 
   @override
