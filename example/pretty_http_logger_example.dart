@@ -17,7 +17,7 @@ void main() async {
 class _BaseRequest {
   static final HttpWithMiddleware _httpClient =
       HttpWithMiddleware.build(middlewares: [
-    HttpLogger(logLevel: LogLevel.BODY),
+    HttpLogger(logLevel: LogLevel.BODY, spaceSize: 8),
   ]);
   static final HttpClientWithMiddleware _streamedHttpClient =
       HttpClientWithMiddleware.build(middlewares: [
